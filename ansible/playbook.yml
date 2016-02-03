@@ -1,0 +1,11 @@
+- hosts: all
+  sudo: true
+  vars_files:
+    - vars/all.yml
+  roles:
+    - server
+    - apache
+    - php5
+    - mysql
+    - elasticsearch
+    - app

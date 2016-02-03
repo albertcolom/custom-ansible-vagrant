@@ -1,0 +1,55 @@
+---
+# This playbook installs development environment
+
+- name: add php 5.6 repository entry
+  apt_repository: repo='ppa:ondrej/php5-5.6' state=present
+  tags: php5
+
+- name: PHP | Installs php development tools
+  action: apt pkg={{ item }} state=installed
+  tags: php5
+  with_items: 
+    - php5
+    - php-apc
+    - php5-xmlrpc
+    - php-soap
+    - php5-gd
+    - imagemagick
+    - php5-imagick
+    - php5-cli
+    - php-pear
+    - php5-curl
+    - php5-intl
+    - php5-mcrypt
+    - php5-xdebug
+    - php5-imap
+    - php5-mysql
+    - php5-dev
+    - php5-ldap
+    - php5-sqlite
+
+- name: PHP Configuration Apache
+  ini_file: dest=/etc/php5/apache2/php.ini section=Date option=date.timezone value={{server.timezone}}
+  sudo: yes
+  tags: app
+
+- name: PHP Configuration Client
+  ini_file: dest=/etc/php5/cli/php.ini section=Date option=date.timezone value={{server.timezone}}
+  sudo: yes
+  tags: app
+
+- name: PHP | Configuration file, php.ini
+  action: template src=etc-php5-apache2-php-ini.j2 dest=/etc/php5/apache2/php.ini
+  tags: common
+
+- name: PHP | install composer
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
+  tags: php5
+
+- name: PHP | rename composer.phar to composer
+  shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  tags: php5
+
+- name: PHP | make composer executable
+  shell: chmod a+x /usr/local/bin/composer
+  tags: php5

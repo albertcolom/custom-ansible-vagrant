@@ -1,0 +1,22 @@
+---
+# This playbook configures the app
+
+- name: Git-Flow install
+  action: apt pkg={{ item }} state=installed
+  tags: app
+  with_items:
+    - git-flow
+
+- name: Configure git
+  copy: src=gitconfig dest=/home/vagrant/.gitconfig mode=755 force=no
+  tags: app
+
+- name: copy git pre-commit
+  copy: src=pre-commit dest={{ project_dir }}/.git/hooks/pre-commit mode=744
+  sudo: false
+  tags: app
+
+- name: copy git post-merge
+  copy: src=post-merge dest={{ project_dir }}/.git/hooks/post-merge mode=744
+  sudo: false
+  tags: app

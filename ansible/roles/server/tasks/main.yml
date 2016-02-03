@@ -1,0 +1,53 @@
+---
+# This playbook installs common utilities for development machines
+
+- name: Update apt
+  apt: update_cache=yes
+  tags: common
+
+- name: Installs common utilities for development
+  action: apt pkg={{ item }} state=installed
+  with_items: 
+    - vim  
+    - git
+    - htop  
+    - python-pip  
+    - curl  
+    - sendmail  
+    - unzip  
+    - tmux  
+    - zsh  
+    - figlet  
+    - openjdk-7-jdk  
+    - httpie
+  tags: common
+
+- name: Check exists vendor directory
+  stat: path=/home/vagrant/.oh-my-zsh
+  register: omz_dir
+
+- name: Installing oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh)
+  git: repo=https://github.com/robbyrussell/oh-my-zsh dest=/home/vagrant/.oh-my-zsh
+  when: not omz_dir.stat.exists
+  tags: common
+  
+- name: deploy .zshrc
+  copy: src=zshrc.in dest=/home/vagrant/.zshrc owner=vagrant
+  when: not omz_dir.stat.exists
+
+- name: Set zsh as default shell
+  user: name=vagrant shell=/bin/zsh
+  when: not omz_dir.stat.exists
+  tags: common
+  
+- name: Common | Message of the day
+  copy: src=motd dest=/etc/update-motd.d/95-ansible mode=755
+  tags: common
+
+- name: Configure the timezone
+  sudo: yes
+  template: src=timezone.tpl dest=/etc/timezone
+
+- name: More Configure the timezone
+  sudo: yes
+  file: src=/usr/share/zoneinfo/{{server.timezone}} dest=/etc/localtime state=link force=yes backup=yes

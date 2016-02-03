@@ -1,0 +1,5 @@
+project_dir: /var/www/html
+server:
+    packages: [vim, htop, imagemagick, nodejs, npm, git]
+    timezone: Europe/Madrid
+    locale: es_ES.UTF-8
