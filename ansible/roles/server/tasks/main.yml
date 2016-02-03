@@ -20,6 +20,8 @@
     - figlet  
     - openjdk-7-jdk  
     - httpie
+    - nodejs
+    - npm
   tags: common
 
 - name: Check exists vendor directory
