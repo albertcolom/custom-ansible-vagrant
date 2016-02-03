@@ -27,6 +27,7 @@
     - php5-dev
     - php5-ldap
     - php5-sqlite
+    - php5-memcached
 
 - name: PHP Configuration Apache
   ini_file: dest=/etc/php5/apache2/php.ini section=Date option=date.timezone value={{server.timezone}}
