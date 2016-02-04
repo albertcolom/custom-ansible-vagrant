@@ -2,3 +2,12 @@ project_dir: /var/www/html
 server:
     timezone: Europe/Madrid
     locale: es_ES.UTF-8
+apache:
+    docroot: /var/www/html
+    servername: 'web.dev'
+mysql:
+    root_password: '123'
+    database: db
+    user: user
+    password: password
+    dump: ''
