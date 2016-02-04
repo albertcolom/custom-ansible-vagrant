@@ -54,3 +54,13 @@
 - name: PHP | make composer executable
   shell: chmod a+x /usr/local/bin/composer
   tags: php5
+
+- name: PHP | symfony installer
+  shell: curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+  sudo: yes
+  tags: app
+
+- name: PHP | make symfony installer executable
+  shell: chmod a+x /usr/local/bin/symfony
+  sudo: yes
+  tags: app
