@@ -20,6 +20,38 @@ run vagrant (for the first time it should take up to 20-30 min)
 $ vagrant up
 ```
 
+### Virtual Machine
+- OS: Ubuntu (trusty64)
+- Name: local.web
+- Memory (RAM): 2048MB
+- CPUs: 1
+- Network: 10.10.10.10
+
+### Installed components
+- Apache 2
+- PHP 5.6
+- MySQL
+- Elasticsearch
+- ElasticHQ
+- Nodejs
+- APC
+- Memcached
+- Adminer
+- Vim  
+- Git
+- Htop  
+- Python-pip  
+- Curl  
+- Sendmail  
+- Unzip  
+- Tmux  
+- Zsh (Default shell)
+- Figlet
+- Openjdk-7-jdk  
+- Httpie
+- Npm
+- Imagemagick
+
 ### Links
 - Web Server: [http://web.dev](http://web.dev) or [http://10.10.10.10](http://10.10.10.10)
 - Adminer: [http://web.dev/adminer](http://web.dev/adminer) or [http://10.10.10.10/adminer](http://10.10.10.10/adminer)
