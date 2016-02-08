@@ -36,6 +36,8 @@ $ vagrant up
 - Nodejs
 - APC
 - Memcached
+- Symfony installer
+- Composer (Globally)
 - Adminer
 - Vim  
 - Git
