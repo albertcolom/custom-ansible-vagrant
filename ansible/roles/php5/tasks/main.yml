@@ -29,6 +29,7 @@
     - php5-sqlite
     - php5-memcached
     - php5-mysql
+    - php-codesniffer
 
 - name: PHP Configuration Apache
   ini_file: dest=/etc/php5/apache2/php.ini section=Date option=date.timezone value={{server.timezone}}
