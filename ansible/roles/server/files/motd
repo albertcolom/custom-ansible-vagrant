@@ -1,2 +1,2 @@
 #!/bin/sh
-figlet -ctf big "devbox - symfony"
+figlet -ctf big "devbox"
