@@ -11,12 +11,12 @@
   copy: src=gitconfig dest=/home/vagrant/.gitconfig mode=755 force=no
   tags: app
 
-- name: copy git pre-commit
-  copy: src=pre-commit dest={{ project_dir }}/.git/hooks/pre-commit mode=744
-  sudo: false
-  tags: app
+#- name: copy git pre-commit
+#  copy: src=pre-commit dest={{ project_dir }}/.git/hooks/pre-commit mode=744
+#  sudo: false
+#  tags: app
 
-- name: copy git post-merge
-  copy: src=post-merge dest={{ project_dir }}/.git/hooks/post-merge mode=744
-  sudo: false
-  tags: app
+#- name: copy git post-merge
+#  copy: src=post-merge dest={{ project_dir }}/.git/hooks/post-merge mode=744
+#  sudo: false
+#  tags: app
