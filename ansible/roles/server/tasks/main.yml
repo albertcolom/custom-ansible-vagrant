@@ -47,9 +47,11 @@
   tags: common
 
 - name: Configure the timezone
-  sudo: yes
+  become: yes
+  become_method: sudo
   template: src=timezone.tpl dest=/etc/timezone
 
 - name: More Configure the timezone
-  sudo: yes
+  become: yes
+  become_method: sudo
   file: src=/usr/share/zoneinfo/{{server.timezone}} dest=/etc/localtime state=link force=yes backup=yes

@@ -23,7 +23,8 @@
 - name: Enable our new site (web)
   action: command a2ensite 05-web
   when: not hosts_dir.stat.exists
-  sudo: yes
+  become: yes
+  become_method: sudo
   tags: app
 
 - name: Restart Apache

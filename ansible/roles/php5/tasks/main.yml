@@ -33,12 +33,14 @@
 
 - name: PHP Configuration Apache
   ini_file: dest=/etc/php5/apache2/php.ini section=Date option=date.timezone value={{server.timezone}}
-  sudo: yes
+  become: yes
+  become_method: sudo
   tags: app
 
 - name: PHP Configuration Client
   ini_file: dest=/etc/php5/cli/php.ini section=Date option=date.timezone value={{server.timezone}}
-  sudo: yes
+  become: yes
+  become_method: sudo
   tags: app
 
 - name: PHP | Configuration file, php.ini
@@ -59,12 +61,14 @@
 
 - name: PHP | symfony installer
   shell: curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
-  sudo: yes
+  become: yes
+  become_method: sudo
   tags: app
 
 - name: PHP | make symfony installer executable
   shell: chmod a+x /usr/local/bin/symfony
-  sudo: yes
+  become: yes
+  become_method: sudo
   tags: app
 
 - name: Creates adminer directory
